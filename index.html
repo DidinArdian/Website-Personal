@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tanya Kabar — Aesthetic Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1: #0f172a; /* deep navy */
+      --accent-a: #7c3aed; /* purple */
+      --accent-b: #06b6d4; /* teal */
+      --card: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.03);
+      --text: #e6eef8;
+      --muted: #b6c2d9;
+      --radius: 18px;
+      --glass-border: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Poppins',system-ui,Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent),
+                  radial-gradient(800px 400px at 90% 90%, rgba(6,182,212,0.08), transparent),
+                  linear-gradient(180deg,var(--bg1), #071028 80%);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:36px;
+    }
+
+    .card{
+      width:100%;
+      max-width:760px;
+      border-radius:var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      padding:28px;
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap:20px;
+      align-items:center;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(6px) saturate(120%);
+    }
+
+    .avatar{
+      width:120px;
+      height:120px;
+      border-radius:22px;
+      background: linear-gradient(135deg,var(--accent-a),var(--accent-b));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:46px;
+      color:white;
+      box-shadow: 0 8px 20px rgba(12,8,60,0.45);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .avatar::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 20%);
+      mix-blend-mode: overlay;
+    }
+
+    .meta{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:0.2px;
+      line-height:1.05;
+    }
+    p.lead{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .message-box{
+      margin-top:12px;
+      background: linear-gradient(180deg,var(--glass), var(--glass-2));
+      padding:14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.03);
+      color:var(--text);
+      font-size:15px;
+    }
+
+    .actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      appearance:none;
+      border:0;
+      padding:10px 14px;
+      border-radius:12px;
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      cursor:pointer;
+      font-weight:600;
+      font-size:14px;
+      transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.5);
+    }
+
+    .btn:hover{transform:translateY(-3px)}
+
+    .btn-yes{
+      background: linear-gradient(90deg,var(--accent-b),var(--accent-a));
+      color:white;
+      box-shadow: 0 12px 30px rgba(7,27,44,0.5), 0 2px 8px rgba(124,58,237,0.12);
+    }
+    .btn-meh{
+      background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      color:var(--muted);
+    }
+    .btn-no{
+      background: linear-gradient(90deg,#ff6b6b, #f97316);
+      color:white;
+    }
+
+    .reply{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .reply .bubble{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:12px 14px;
+      border-radius:12px;
+      border: 1px solid rgba(255,255,255,0.03);
+      color:var(--text);
+      font-weight:600;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+      max-width:420px;
+    }
+
+    .small{font-size:12px;color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:640px){
+      .card{grid-template-columns:1fr; text-align:center}
+      .avatar{margin:0 auto}
+      .reply{justify-content:center}
+    }
+
+    /* tiny flair */
+    @keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+    .pop{animation:pop .18s ease}
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <div class="avatar" aria-hidden="true">🙂</div>
+
+    <section class="meta" aria-label="Tanya kabar">
+      <h1>Tanya kabar ke Nona!</h1>
+      <p class="lead">Kirim sapaan singkat dan pilih jawaban yang menunjukkan perasaan mereka. Desain minimal, enak dilihat, dan responsive.</p>
+
+      <div class="message-box" id="messageBox">
+        <div class="small">Kamu:</div>
+        <div style="margin-top:8px;font-size:15px;">Hai! Gimana kabarmu hari ini Simaa?</div>
+
+        <div class="actions" role="group" aria-label="Pilihan respon">
+          <button class="btn btn-yes" data-reply="Senang banget denger kabarmu! 😊">Baik</button>
+          <button class="btn btn-meh" data-reply="Oke, semoga harimu makin baik ya.">Biasa</button>
+          <button class="btn btn-no" data-reply="Wah.. semoga cepat membaik. Aku ada kalau butuh teman."">Kurang</button>
+        </div>
+
+        <div class="reply" id="reply" style="display:none;">
+          <div class="bubble pop" id="bubbleText">Thanks!</div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:10px;color:var(--muted);font-size:13px">Tip: kamu bisa pakai ini sebagai template pesan di aplikasi chat.</div>
+    </section>
+  </main>
+
+  <script>
+    // Minimal interactivity (bisa dihilangkan kalau mau murni HTML/CSS)
+    const buttons = document.querySelectorAll('.actions .btn');
+    const reply = document.getElementById('reply');
+    const bubble = document.getElementById('bubbleText');
+    const avatar = document.querySelector('.avatar');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.getAttribute('data-reply');
+        bubble.textContent = text;
+        reply.style.display = 'flex';
+        reply.classList.add('pop');
+
+        // change avatar emoji slightly based on selection
+        if(btn.classList.contains('btn-yes')) avatar.textContent = '😄';
+        else if(btn.classList.contains('btn-meh')) avatar.textContent = '🙂';
+        else if(btn.classList.contains('btn-no')) avatar.textContent = '🤍';
+
+        // small focus effect
+        setTimeout(()=> reply.classList.remove('pop'), 300);
+      });
+    });
+  </script>
+</body>
+</html>
